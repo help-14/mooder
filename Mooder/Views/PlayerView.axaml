@@ -1,0 +1,57 @@
+<UserControl 
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:vm="clr-namespace:Mooder.ViewModels"
+  mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
+  x:Class="Mooder.Views.PlayerView"
+  x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  <Panel>
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial
+          BackgroundSource="Digger"
+          TintColor="Black"
+          TintOpacity="0.7"
+          MaterialOpacity="0.4" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+    <StackPanel
+      VerticalAlignment="Center"
+      HorizontalAlignment="Center">
+      <Border
+        Name="CoverPicture"
+        Margin="30"
+        Width="300" Height="{Binding Width, ElementName=CoverPicture}"
+        CornerRadius="10"
+        BoxShadow="5 5 10 2 #4b4b4b">
+        <Border.Background>
+          <ImageBrush Source="/Assets/ecae82853b784726c7e2c4e2ba55a4fd.webp" ></ImageBrush>
+        </Border.Background>
+      </Border>
+      <Label
+        Foreground="GhostWhite"
+        Content="Radioactive" 
+        HorizontalContentAlignment="Center"
+        FontSize="25" 
+        FontWeight="Bold"/>
+      <Label 
+        Foreground="GhostWhite"
+        HorizontalContentAlignment="Center"
+        Content="Imagine Dragons"/>
+      <Label 
+        Foreground="GhostWhite"
+        FontStyle="Italic"
+        HorizontalContentAlignment="Center"
+        Content="Night Visions"/>
+      <Slider
+        Foreground="GhostWhite"/>
+    </StackPanel>
+  </Panel>
+
+</UserControl>
