@@ -3,13 +3,8 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:vm="clr-namespace:Mooder.ViewModels"
   mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
-  x:Class="Mooder.Views.PlayerView"
-  x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <vm:MainViewModel />
-  </Design.DataContext>
+  x:Class="Mooder.Views.PlayerView">
 
   <Panel>
     <ExperimentalAcrylicBorder IsHitTestVisible="False">
@@ -27,30 +22,30 @@
       <Border
         Name="CoverPicture"
         Margin="30"
-        Width="300" Height="{Binding Width, ElementName=CoverPicture}"
+        Width="300" Height="{Binding Width, ElementName=CoverPicture, FallbackValue=300}"
         CornerRadius="10"
-        BoxShadow="5 5 10 2 #4b4b4b">
+        BoxShadow="5 5 10 2 #774b4b4b">
         <Border.Background>
           <ImageBrush Source="/Assets/ecae82853b784726c7e2c4e2ba55a4fd.webp" ></ImageBrush>
         </Border.Background>
       </Border>
       <Label
-        Foreground="GhostWhite"
         Content="Radioactive" 
         HorizontalContentAlignment="Center"
         FontSize="25" 
         FontWeight="Bold"/>
       <Label 
-        Foreground="GhostWhite"
         HorizontalContentAlignment="Center"
+        FontStyle="Italic"
         Content="Imagine Dragons"/>
       <Label 
-        Foreground="GhostWhite"
-        FontStyle="Italic"
         HorizontalContentAlignment="Center"
         Content="Night Visions"/>
       <Slider
-        Foreground="GhostWhite"/>
+        Minimum="0"
+        Maximum="100"
+		Value="100"
+        Foreground="#3fffffff"/>
     </StackPanel>
   </Panel>
 

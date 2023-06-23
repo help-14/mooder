@@ -1,6 +1,21 @@
-﻿namespace Mooder.ViewModels;
+﻿using Mooder.DataSources;
+using ReactiveUI;
+using Simple.MPD.Responses;
+using System;
+using System.Collections.Generic;
 
-public class MainViewModel : ViewModelBase
+namespace Mooder.ViewModels;
+
+public class PlaylistViewModel : ViewModelBase
 {
-    public string Greeting => "Welcome to Avalonia!";
+    private List<SongInfo> playlist; 
+    public List<SongInfo> Playlist { get => playlist; set=> this.RaiseAndSetIfChanged(ref playlist, value); }
+
+    public async void LoadData()
+    {
+        var mpd = new MusicPlayerDaemon();
+        await mpd.Init();
+        Playlist = await mpd.GetQueue();
+    }
+
 }

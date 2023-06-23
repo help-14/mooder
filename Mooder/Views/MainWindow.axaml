@@ -11,15 +11,25 @@
     TransparencyLevelHint="AcrylicBlur"
     Background="Transparent"
     Width="800" Height="800"
-    ExtendClientAreaToDecorationsHint="True">
-    <SplitView 
-        IsPaneOpen="True"
-        DisplayMode="Inline"
-        OpenPaneLength="400">
-        <SplitView.Pane>
-            <views:PlaylistView/>
-        </SplitView.Pane>
+    ExtendClientAreaToDecorationsHint="True"
+	xmlns:vm="clr-namespace:Mooder.ViewModels"
+    x:DataType="vm:PlaylistViewModel">
 
-        <views:PlayerView />
-    </SplitView>
+	<Design.DataContext>
+		<vm:PlaylistViewModel />
+	</Design.DataContext>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+        
+		<views:PlaylistView 
+			Grid.Column="0"
+			DataContext="{Binding}"/>
+
+        <views:PlayerView
+			Grid.Column="1"/>
+    </Grid>
 </Window>

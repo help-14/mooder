@@ -4,8 +4,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
-    x:Class="Mooder.Views.PlaylistView">
-    
+    x:Class="Mooder.Views.PlaylistView"
+    x:DataType="vm:PlaylistViewModel"
+	xmlns:vm="clr-namespace:Mooder.ViewModels"
+	xmlns:mpd="clr-namespace:Simple.MPD.Responses"
+    xmlns:views="clr-namespace:Mooder.Views">
+
+	<Design.DataContext>
+		<vm:PlaylistViewModel />
+	</Design.DataContext>
+	
     <Panel>
         <ExperimentalAcrylicBorder IsHitTestVisible="False">
             <ExperimentalAcrylicBorder.Material>
@@ -13,10 +21,39 @@
                     BackgroundSource="Digger"
                     TintColor="Black"
                     TintOpacity="1"
-                    MaterialOpacity="0.4" />
+                    MaterialOpacity="0.6" />
             </ExperimentalAcrylicBorder.Material>
         </ExperimentalAcrylicBorder>
-        
+		<ListBox
+			Background="Transparent"
+			ItemsSource="{Binding Playlist}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						
+						<views:NoAlbumCover
+							Margin="0,0,10,0" />
+						
+						<StackPanel Grid.Column="1">
+							<Label 
+								VerticalAlignment="Bottom"
+								VerticalContentAlignment="Bottom"
+								Content="{Binding Title}" />
+							<Label
+								VerticalAlignment="Top"
+								VerticalContentAlignment="Top"
+								FontStyle="Italic" 
+								Opacity="0.5"
+								Content="{Binding Artist}" />
+						</StackPanel>
+					</Grid>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
     </Panel>
 
 </UserControl>
