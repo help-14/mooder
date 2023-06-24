@@ -11,11 +11,6 @@
         <AvaloniaResource Include="Assets\**" />
     </ItemGroup>
 
-
-    <ItemGroup>
-      <None Remove="Assets\note_music.svg" />
-    </ItemGroup>
-
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0-rc1.1" />
@@ -24,6 +19,11 @@
         <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="FluentIcons.Avalonia" Version="1.1.204-rc" />
         <PackageReference Include="Simple.MPD" Version="0.6.3.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Utils\" />
     </ItemGroup>
 </Project>

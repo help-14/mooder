@@ -1,52 +1,186 @@
-<UserControl 
+<UserControl
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:ic="using:FluentIcons.Avalonia"
   mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
   x:Class="Mooder.Views.PlayerView">
 
-  <Panel>
-    <ExperimentalAcrylicBorder IsHitTestVisible="False">
-      <ExperimentalAcrylicBorder.Material>
-        <ExperimentalAcrylicMaterial
-          BackgroundSource="Digger"
-          TintColor="Black"
-          TintOpacity="0.7"
-          MaterialOpacity="0.4" />
-      </ExperimentalAcrylicBorder.Material>
-    </ExperimentalAcrylicBorder>
-    <StackPanel
-      VerticalAlignment="Center"
-      HorizontalAlignment="Center">
-      <Border
-        Name="CoverPicture"
-        Margin="30"
-        Width="300" Height="{Binding Width, ElementName=CoverPicture, FallbackValue=300}"
-        CornerRadius="10"
-        BoxShadow="5 5 10 2 #774b4b4b">
-        <Border.Background>
-          <ImageBrush Source="/Assets/ecae82853b784726c7e2c4e2ba55a4fd.webp" ></ImageBrush>
-        </Border.Background>
-      </Border>
-      <Label
-        Content="Radioactive" 
-        HorizontalContentAlignment="Center"
-        FontSize="25" 
-        FontWeight="Bold"/>
-      <Label 
-        HorizontalContentAlignment="Center"
-        FontStyle="Italic"
-        Content="Imagine Dragons"/>
-      <Label 
-        HorizontalContentAlignment="Center"
-        Content="Night Visions"/>
-      <Slider
-        Minimum="0"
-        Maximum="100"
-		Value="100"
-        Foreground="#3fffffff"/>
-    </StackPanel>
-  </Panel>
+	<Panel>
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+				  BackgroundSource="Digger"
+				  TintColor="Black"
+				  TintOpacity="0.7"
+				  MaterialOpacity="0.4" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+		<StackPanel
+		  VerticalAlignment="Center"
+		  HorizontalAlignment="Center">
+			<Border
+			  Name="CoverPicture"
+			  Margin="30"
+			  Width="300" Height="{Binding Width, ElementName=CoverPicture, FallbackValue=300}"
+			  CornerRadius="10"
+			  BoxShadow="5 5 10 2 #774b4b4b">
+				<Border.Background>
+					<ImageBrush Source="/Assets/ecae82853b784726c7e2c4e2ba55a4fd.webp" Opacity="1" />
+				</Border.Background>
+			</Border>
+			<Label
+			  Content="Radioactive"
+			  HorizontalContentAlignment="Center"
+			  FontSize="25"
+			  FontWeight="Bold"/>
+			<Label
+			  HorizontalContentAlignment="Center"
+			  FontStyle="Italic"
+			  Content="Imagine Dragons"/>
+			<Label
+			  HorizontalContentAlignment="Center"
+			  Content="Night Visions"/>
+
+			<StackPanel
+				Name="ControlGrid"
+				Orientation="Horizontal"
+				HorizontalAlignment="Center">
+				<Button
+					CornerRadius="25"
+					Width="50" Height="50"
+					Margin="10">
+					<ic:SymbolIcon 
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="Previous" 
+						IsFilled="True" />
+				</Button>
+				<Button
+					CornerRadius="25"
+					Width="50" Height="50"
+					Margin="10">
+					<ic:SymbolIcon
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="Play"
+						IsFilled="True"/>
+				</Button>
+				<Button
+					CornerRadius="25"
+					Width="50" Height="50"
+					Margin="10">
+					<ic:SymbolIcon 
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="Next" 
+						IsFilled="True" />
+				</Button>
+			</StackPanel>
+
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<ic:SymbolIcon 
+					Margin="0,1,10,0"
+					VerticalAlignment="Center"
+					Grid.Column="0"
+					Symbol="Speaker0" 
+					IsFilled="True" />
+
+				<Slider
+					VerticalAlignment="Center"
+					Grid.Column="1"
+					Minimum="0"
+					Maximum="100"
+					Value="100"
+					Foreground="#3fffffff"/>
+
+				<ic:SymbolIcon 
+					Margin="10,1,0,0"
+					VerticalAlignment="Center"
+					Grid.Column="2"
+					Symbol="Speaker2" 
+					IsFilled="True" />
+			</Grid>
+			
+			<Grid Name="BottomGrid">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<Button
+					CornerRadius="17"
+					Width="34" Height="34"
+					Margin="10"
+					Grid.Column="0">
+					<ic:SymbolIcon 
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="AppsListDetail" 
+						IsFilled="True" />
+				</Button>
+
+				<Button
+					CornerRadius="17"
+					Width="34" Height="34"
+					Margin="10"
+					Grid.Column="1">
+					<ic:SymbolIcon 
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="TextCaseLowercase" 
+						IsFilled="True" />
+				</Button>
+
+				<Button
+					CornerRadius="17"
+					Width="34" Height="34"
+					Margin="10"
+					Grid.Column="3">
+					<ic:SymbolIcon 
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="ArrowRepeatAll" 
+						IsFilled="True" />
+				</Button>
+
+				<Button
+					CornerRadius="17"
+					Width="34" Height="34"
+					Margin="10"
+					Grid.Column="4">
+					<ic:SymbolIcon 
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="Navigation" 
+						IsFilled="True" />
+				</Button>
+			</Grid>
+		</StackPanel>
+	</Panel>
 
 </UserControl>

@@ -3,6 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ic="using:FluentIcons.Avalonia"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	x:Class="Mooder.Views.NoAlbumCover">
 	<Border
@@ -11,8 +12,14 @@
         CornerRadius="4"
         Background="#774b4b4b"
 		BorderThickness="1"
-		BorderBrush="#11ffffff"
-		Padding="12">
-		<Svg Path="/Assets/note_music.svg" />
+		BorderBrush="#11ffffff">
+		<ic:SymbolIcon 
+			Symbol="MusicNote2" 
+			Foreground="#B8B3B4" 
+			FontSize="30" 
+			Margin="0,2,0,0"
+			IsFilled="True"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"/>
 	</Border>
 </UserControl>

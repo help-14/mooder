@@ -3,7 +3,6 @@ using Simple.MPD;
 using System.Threading.Tasks;
 using Simple.MPD.Responses;
 using System.Reactive.Linq;
-using System;
 using System.Linq;
 using System.Collections.Generic;
 
