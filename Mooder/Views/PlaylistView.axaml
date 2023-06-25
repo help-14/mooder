@@ -4,11 +4,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+    xmlns:p="clr-namespace:Mooder.Properties"
     x:Class="Mooder.Views.PlaylistView"
     x:DataType="vm:PlaylistViewModel"
 	xmlns:vm="clr-namespace:Mooder.ViewModels"
 	xmlns:mpd="clr-namespace:Simple.MPD.Responses"
-    xmlns:views="clr-namespace:Mooder.Views">
+    xmlns:views="clr-namespace:Mooder.Views"
+	xmlns:ic="using:FluentIcons.Avalonia">
+
+	<UserControl.Styles>
+		<Style Selector="TabControl.RightHeader WrapPanel">
+			<Setter Property="FlowDirection" Value="RightToLeft"/>
+		</Style>
+	</UserControl.Styles>
 
 	<Design.DataContext>
 		<vm:PlaylistViewModel />
@@ -24,36 +32,86 @@
                     MaterialOpacity="0.6" />
             </ExperimentalAcrylicBorder.Material>
         </ExperimentalAcrylicBorder>
-		<ListBox
-			Background="Transparent"
-			ItemsSource="{Binding Playlist}">
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<Grid>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto" />
-							<ColumnDefinition />
-						</Grid.ColumnDefinitions>
-						
-						<views:NoAlbumCover
-							Margin="0,0,10,0" />
-						
-						<StackPanel Grid.Column="1">
-							<Label 
-								VerticalAlignment="Bottom"
-								VerticalContentAlignment="Bottom"
-								Content="{Binding Title}" />
-							<Label
-								VerticalAlignment="Top"
-								VerticalContentAlignment="Top"
-								FontStyle="Italic" 
-								Opacity="0.5"
-								Content="{Binding Artist}" />
-						</StackPanel>
-					</Grid>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
+
+		<TabControl
+			Name="MainTab"
+			Margin="0" Padding="0">
+			<TabItem>
+				<TabItem.Header>
+					<ic:SymbolIcon
+						ToolTip.Tip="{x:Static p:Resource.MusicSources}"
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="SoundSource"
+						IsFilled="True" />
+				</TabItem.Header>
+				<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<ic:SymbolIcon
+						ToolTip.Tip="{x:Static p:Resource.Albums}"
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="Album"
+						IsFilled="True" />
+				</TabItem.Header>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Square : " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+					<Rectangle Fill="Blue" Width="63" Height="41"/>
+				</StackPanel>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<ic:SymbolIcon
+						ToolTip.Tip="{x:Static p:Resource.Playlist}"
+						Margin="0,1,0,0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="20"
+						Symbol="MusicNote1"
+						IsFilled="True" />
+				</TabItem.Header>
+				<ListBox
+					ScrollViewer.VerticalScrollBarVisibility="Auto"
+					ScrollViewer.AllowAutoHide="True"
+					Background="Transparent"
+					SelectionMode="Toggle"
+					ItemsSource="{Binding Playlist}">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition />
+								</Grid.ColumnDefinitions>
+
+								<views:NoAlbumCover
+									Margin="0,0,10,0" />
+
+								<StackPanel Grid.Column="1">
+									<Label
+										VerticalAlignment="Bottom"
+										VerticalContentAlignment="Bottom"
+										Content="{Binding Title}" />
+									<Label
+										VerticalAlignment="Top"
+										VerticalContentAlignment="Top"
+										FontStyle="Italic"
+										Opacity="0.5"
+										Content="{Binding Artist}" />
+								</StackPanel>
+							</Grid>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</TabItem>
+		</TabControl>
+		
     </Panel>
 
 </UserControl>

@@ -11,6 +11,21 @@
         <AvaloniaResource Include="Assets\**" />
     </ItemGroup>
 
+
+    <ItemGroup>
+		<EmbeddedResource Update="Properties\Resource.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resource.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Resource Include="Properties\Resource.resx">
+        <Generator></Generator>
+      </Resource>
+    </ItemGroup>
+
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0-rc1.1" />
@@ -27,5 +42,13 @@
     <ItemGroup>
       <Folder Include="Db\" />
       <Folder Include="Utils\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resource.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resource.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 </Project>

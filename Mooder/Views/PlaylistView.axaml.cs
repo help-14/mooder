@@ -1,6 +1,6 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using System;
 
 namespace Mooder.Views;
 
@@ -8,11 +8,16 @@ public partial class PlaylistView : UserControl
 {
     public PlaylistView()
     {
-        InitializeComponent();
+        AvaloniaXamlLoader.Load(this);
+
+        var mainTab = this.FindControl<TabControl>("MainTab");
+        if (mainTab != null && (OperatingSystem.IsMacOS() || OperatingSystem.IsLinux()))
+        {
+            mainTab.Classes.Add("RightHeader");
+        }
     }
 
-    private void InitializeComponent()
-    {
-        AvaloniaXamlLoader.Load(this);
-    }
+    //protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    //{
+    //}
 }

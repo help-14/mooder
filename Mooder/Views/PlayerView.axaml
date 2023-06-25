@@ -3,9 +3,31 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:p="clr-namespace:Mooder.Properties"
   xmlns:ic="using:FluentIcons.Avalonia"
   mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
   x:Class="Mooder.Views.PlayerView">
+
+	<UserControl.Styles>
+		<Style Selector="TabControl WrapPanel">
+			<Setter Property="FlowDirection" Value="RightToLeft"/>
+		</Style>
+
+		<Style Selector="Button.RoundBig">
+			<Setter Property="CornerRadius" Value="25"/>
+			<Setter Property="Width" Value="50"/>
+			<Setter Property="Height" Value="50"/>
+			<Setter Property="Margin" Value="10"/>
+		</Style>
+
+		<Style Selector="Button.RoundSmall">
+			<Setter Property="CornerRadius" Value="17"/>
+			<Setter Property="Width" Value="34"/>
+			<Setter Property="Height" Value="34"/>
+			<Setter Property="Margin" Value="10"/>
+		</Style>
+
+	</UserControl.Styles>
 
 	<Panel>
 		<ExperimentalAcrylicBorder IsHitTestVisible="False">
@@ -25,21 +47,25 @@
 			  Margin="30"
 			  Width="300" Height="{Binding Width, ElementName=CoverPicture, FallbackValue=300}"
 			  CornerRadius="10"
-			  BoxShadow="5 5 10 2 #774b4b4b">
+			  BoxShadow="5 5 10 2 #774b4b4b"
+			  ToolTip.Tip="{x:Static p:Resource.AlbumPicture}">
 				<Border.Background>
 					<ImageBrush Source="/Assets/ecae82853b784726c7e2c4e2ba55a4fd.webp" Opacity="1" />
 				</Border.Background>
 			</Border>
 			<Label
 			  Content="Radioactive"
+			  ToolTip.Tip="{x:Static p:Resource.TrackName}"
 			  HorizontalContentAlignment="Center"
 			  FontSize="25"
 			  FontWeight="Bold"/>
 			<Label
+			  ToolTip.Tip="{x:Static p:Resource.Artist}"
 			  HorizontalContentAlignment="Center"
 			  FontStyle="Italic"
 			  Content="Imagine Dragons"/>
 			<Label
+			  ToolTip.Tip="{x:Static p:Resource.AlbumName}"
 			  HorizontalContentAlignment="Center"
 			  Content="Night Visions"/>
 
@@ -48,9 +74,8 @@
 				Orientation="Horizontal"
 				HorizontalAlignment="Center">
 				<Button
-					CornerRadius="25"
-					Width="50" Height="50"
-					Margin="10">
+					Classes="RoundBig"
+					ToolTip.Tip="{x:Static p:Resource.Previous}">
 					<ic:SymbolIcon 
 						Margin="0,1,0,0"
 						VerticalAlignment="Center"
@@ -60,9 +85,8 @@
 						IsFilled="True" />
 				</Button>
 				<Button
-					CornerRadius="25"
-					Width="50" Height="50"
-					Margin="10">
+					Classes="RoundBig"
+					ToolTip.Tip="{x:Static p:Resource.Play}">
 					<ic:SymbolIcon
 						Margin="0,1,0,0"
 						VerticalAlignment="Center"
@@ -72,9 +96,8 @@
 						IsFilled="True"/>
 				</Button>
 				<Button
-					CornerRadius="25"
-					Width="50" Height="50"
-					Margin="10">
+					Classes="RoundBig"
+					ToolTip.Tip="{x:Static p:Resource.Next}">
 					<ic:SymbolIcon 
 						Margin="0,1,0,0"
 						VerticalAlignment="Center"
@@ -97,7 +120,8 @@
 					VerticalAlignment="Center"
 					Grid.Column="0"
 					Symbol="Speaker0" 
-					IsFilled="True" />
+					IsFilled="True"
+					ToolTip.Tip="{x:Static p:Resource.VolumeMute}" />
 
 				<Slider
 					VerticalAlignment="Center"
@@ -105,14 +129,16 @@
 					Minimum="0"
 					Maximum="100"
 					Value="100"
-					Foreground="#3fffffff"/>
+					Foreground="#3fffffff"
+					ToolTip.Tip="{x:Static p:Resource.Volume}" />
 
 				<ic:SymbolIcon 
 					Margin="10,1,0,0"
 					VerticalAlignment="Center"
 					Grid.Column="2"
-					Symbol="Speaker2" 
-					IsFilled="True" />
+					Symbol="Speaker2"
+					IsFilled="True"
+					ToolTip.Tip="{x:Static p:Resource.VolumeFull}" />
 			</Grid>
 			
 			<Grid Name="BottomGrid">
@@ -125,10 +151,9 @@
 				</Grid.ColumnDefinitions>
 
 				<Button
-					CornerRadius="17"
-					Width="34" Height="34"
-					Margin="10"
-					Grid.Column="0">
+					Classes="RoundSmall"
+					Grid.Column="0"
+					ToolTip.Tip="{x:Static p:Resource.PlaylistShow}">
 					<ic:SymbolIcon 
 						Margin="0,1,0,0"
 						VerticalAlignment="Center"
@@ -139,10 +164,9 @@
 				</Button>
 
 				<Button
-					CornerRadius="17"
-					Width="34" Height="34"
-					Margin="10"
-					Grid.Column="1">
+					Classes="RoundSmall"
+					Grid.Column="1"
+					ToolTip.Tip="{x:Static p:Resource.LyricHide}">
 					<ic:SymbolIcon 
 						Margin="0,1,0,0"
 						VerticalAlignment="Center"
@@ -153,24 +177,22 @@
 				</Button>
 
 				<Button
-					CornerRadius="17"
-					Width="34" Height="34"
-					Margin="10"
-					Grid.Column="3">
+					Classes="RoundSmall"
+					Grid.Column="3"
+					ToolTip.Tip="{x:Static p:Resource.RepeatNone}">
 					<ic:SymbolIcon 
 						Margin="0,1,0,0"
 						VerticalAlignment="Center"
 						HorizontalAlignment="Center"
 						FontSize="20"
-						Symbol="ArrowRepeatAll" 
+						Symbol="ArrowRepeatAllOff" 
 						IsFilled="True" />
 				</Button>
 
 				<Button
-					CornerRadius="17"
-					Width="34" Height="34"
-					Margin="10"
-					Grid.Column="4">
+					Classes="RoundSmall"
+					Grid.Column="4"
+					ToolTip.Tip="{x:Static p:Resource.Options}">
 					<ic:SymbolIcon 
 						Margin="0,1,0,0"
 						VerticalAlignment="Center"
