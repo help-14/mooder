@@ -61,6 +61,15 @@ namespace Mooder.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Album name.
         /// </summary>
         public static string AlbumName {
@@ -93,6 +102,15 @@ namespace Mooder.Properties {
         public static string Artist {
             get {
                 return ResourceManager.GetString("Artist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local musics.
+        /// </summary>
+        public static string LocalMusics {
+            get {
+                return ResourceManager.GetString("LocalMusics", resourceCulture);
             }
         }
         
@@ -138,6 +156,15 @@ namespace Mooder.Properties {
         public static string Next {
             get {
                 return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online radios.
+        /// </summary>
+        public static string OnlineRadios {
+            get {
+                return ResourceManager.GetString("OnlineRadios", resourceCulture);
             }
         }
         
@@ -210,6 +237,24 @@ namespace Mooder.Properties {
         public static string RepeatNone {
             get {
                 return ResourceManager.GetString("RepeatNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Servers.
+        /// </summary>
+        public static string Servers {
+            get {
+                return ResourceManager.GetString("Servers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tap here to load all tracks on local disk..
+        /// </summary>
+        public static string TapLoadAllTracks {
+            get {
+                return ResourceManager.GetString("TapLoadAllTracks", resourceCulture);
             }
         }
         

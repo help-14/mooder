@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="AlbumName" xml:space="preserve">
     <value>Album name</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="Artist" xml:space="preserve">
     <value>Artist</value>
+  </data>
+  <data name="LocalMusics" xml:space="preserve">
+    <value>Local musics</value>
   </data>
   <data name="Lyric" xml:space="preserve">
     <value>Lyric</value>
@@ -143,6 +149,9 @@
   </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
+  </data>
+  <data name="OnlineRadios" xml:space="preserve">
+    <value>Online radios</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
@@ -167,6 +176,12 @@
   </data>
   <data name="RepeatNone" xml:space="preserve">
     <value>No repeat</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Servers</value>
+  </data>
+  <data name="TapLoadAllTracks" xml:space="preserve">
+    <value>Tap here to load all tracks on local disk.</value>
   </data>
   <data name="TrackName" xml:space="preserve">
     <value>Track name</value>

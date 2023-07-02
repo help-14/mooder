@@ -10,14 +10,39 @@
 	xmlns:vm="clr-namespace:Mooder.ViewModels"
 	xmlns:mpd="clr-namespace:Simple.MPD.Responses"
     xmlns:views="clr-namespace:Mooder.Views"
+	xmlns:utils="clr-namespace:Mooder.Utils"
 	xmlns:ic="using:FluentIcons.Avalonia">
 
 	<UserControl.Styles>
 		<Style Selector="TabControl.RightHeader WrapPanel">
 			<Setter Property="FlowDirection" Value="RightToLeft"/>
 		</Style>
-	</UserControl.Styles>
 
+		<Style Selector="Separator">
+			<Setter Property="Margin" Value="0"/>
+			<Setter Property="Opacity" Value="0.3"/>
+		</Style>
+
+		<Style Selector="ItemsControl.Source">
+			<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+		</Style>
+
+		<!--<Style Selector="Expander">
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+		</Style>
+		
+		<Style Selector="Expander ToggleButton">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+		</Style>-->
+	</UserControl.Styles>
+	
+	<UserControl.Resources>
+		<utils:BitmapAssetValueConverter x:Key="variableImage"/>
+	</UserControl.Resources>
+	
 	<Design.DataContext>
 		<vm:PlaylistViewModel />
 	</Design.DataContext>
@@ -47,7 +72,119 @@
 						Symbol="SoundSource"
 						IsFilled="True" />
 				</TabItem.Header>
-				<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				<StackPanel>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+						<Button
+							ToolTip.Tip="{x:Static p:Resource.TapLoadAllTracks}"
+							HorizontalAlignment="Stretch"
+							HorizontalContentAlignment="Stretch"
+							Margin="0" Padding="0"
+							Background="Transparent">
+							<Grid Margin="10">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition/>
+								</Grid.ColumnDefinitions>
+								<ic:SymbolIcon
+									Margin="0,1,0,0"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Center"
+									FontSize="20"
+									Symbol="Folder"
+									IsFilled="True" />
+								<Label
+									Grid.Column="1"
+									Margin="10,0,0,0"
+									VerticalAlignment="Center"
+									Content="{x:Static p:Resource.LocalMusics}" />
+							</Grid>
+						</Button>
+						<Button
+							ToolTip.Tip="{x:Static p:Resource.Add}"
+							Background="Transparent"
+							Cursor="Hand"
+							Margin="0,0,10,0"
+							Grid.Column="1">
+							<ic:SymbolIcon
+								Margin="0,1,0,0"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Center"
+								FontSize="20"
+								Symbol="AddCircle"
+								IsFilled="True" />
+						</Button>
+					</Grid>
+					<Separator />
+					<Grid Margin="10">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+						<ic:SymbolIcon
+							Margin="0,1,0,0"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center"
+							FontSize="20"
+							Symbol="Server"
+							IsFilled="True" />
+						<Label
+							Grid.Column="1"
+							Margin="10,0,0,0"
+							VerticalAlignment="Center"
+							Content="{x:Static p:Resource.Servers}" />
+						<Button
+							ToolTip.Tip="{x:Static p:Resource.Add}"
+							Background="Transparent"
+							Cursor="Hand"
+							Grid.Column="2">
+							<ic:SymbolIcon
+								Margin="0,1,0,0"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Center"
+								FontSize="20"
+								Symbol="AddCircle"
+								IsFilled="True" />
+						</Button>
+					</Grid>
+					<Separator />
+					<Grid Margin="10">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+						<ic:SymbolIcon
+							Margin="0,1,0,0"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center"
+							FontSize="20"
+							Symbol="Globe"
+							IsFilled="True" />
+						<Label
+							Grid.Column="1"
+							Margin="10,0,0,0"
+							VerticalAlignment="Center"
+							Content="{x:Static p:Resource.OnlineRadios}" />
+						<Button
+							ToolTip.Tip="{x:Static p:Resource.Add}"
+							Background="Transparent"
+							Cursor="Hand"
+							Grid.Column="2">
+							<ic:SymbolIcon
+								Margin="0,1,0,0"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Center"
+								FontSize="20"
+								Symbol="AddCircle"
+								IsFilled="True" />
+						</Button>
+					</Grid>
+				</StackPanel>
 			</TabItem>
 			<TabItem>
 				<TabItem.Header>
@@ -60,10 +197,31 @@
 						Symbol="Album"
 						IsFilled="True" />
 				</TabItem.Header>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="Square : " HorizontalAlignment="Left" VerticalAlignment="Center"/>
-					<Rectangle Fill="Blue" Width="63" Height="41"/>
-				</StackPanel>
+				<ItemsControl
+					ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+					ItemsSource="{Binding Albums}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel Margin="0" />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Button
+								HorizontalAlignment="Center"
+								Background="Transparent"
+								Margin="10" Padding="10">
+								<StackPanel>
+									<Image
+										Width="160" Height="160"
+										Source="{Binding Picture, Converter={StaticResource variableImage}}"/>
+									<Label Content="{Binding Title}" />
+									<Label Content="{Binding Artist}" FontStyle="Italic" />
+								</StackPanel>
+							</Button>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
 			</TabItem>
 			<TabItem>
 				<TabItem.Header>

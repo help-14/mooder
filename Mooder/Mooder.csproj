@@ -41,7 +41,12 @@
 
     <ItemGroup>
       <Folder Include="Db\" />
-      <Folder Include="Utils\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaResource Update="Assets\ecae82853b784726c7e2c4e2ba55a4fd.webp">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AvaloniaResource>
     </ItemGroup>
 
     <ItemGroup>
