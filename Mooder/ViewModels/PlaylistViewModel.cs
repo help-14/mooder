@@ -33,9 +33,9 @@ public class PlaylistViewModel : ViewModelBase
         }
         Albums = a;
 
-        var mpd = new MusicPlayerDaemon();
-        await mpd.Init();
-        Playlist = await mpd.GetQueue();
+        //var mpd = new MusicPlayerDaemon();
+        //await mpd.Init();
+        //Playlist = await mpd.GetQueue();
     }
 
 }

@@ -21,8 +21,8 @@
 
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition />
-			<ColumnDefinition />
+			<ColumnDefinition Width="4*" />
+			<ColumnDefinition Width="5*" />
 		</Grid.ColumnDefinitions>
         
 		<views:PlaylistView 
